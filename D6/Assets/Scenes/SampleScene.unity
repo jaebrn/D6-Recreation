@@ -204,7 +204,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2121234436346812283
+--- !u!1001 &1787706189
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -270,6 +270,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Dice-Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026089955060030060, guid: b56b32185fa2541468ac04fa39738827,
+        type: 3}
+      propertyPath: dieColor.Array.data[0].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026089955060030060, guid: b56b32185fa2541468ac04fa39738827,
+        type: 3}
+      propertyPath: dieColor.Array.data[1].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026089955060030060, guid: b56b32185fa2541468ac04fa39738827,
+        type: 3}
+      propertyPath: dieColor.Array.data[2].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026089955060030060, guid: b56b32185fa2541468ac04fa39738827,
+        type: 3}
+      propertyPath: dieColor.Array.data[3].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026089955060030060, guid: b56b32185fa2541468ac04fa39738827,
+        type: 3}
+      propertyPath: dieColor.Array.data[4].a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8026089955060030060, guid: b56b32185fa2541468ac04fa39738827,
+        type: 3}
+      propertyPath: dieColor.Array.data[5].a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56b32185fa2541468ac04fa39738827, type: 3}

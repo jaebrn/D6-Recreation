@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_dieValue: 1
+  m_dieColor: 0
   dieFace:
   - {fileID: 1743175584068361140, guid: 173d93754fc8f7142ba379a55d0434aa, type: 3}
   - {fileID: 6302832648389494359, guid: 173d93754fc8f7142ba379a55d0434aa, type: 3}
@@ -153,3 +154,10 @@ MonoBehaviour:
   - {fileID: -3224970138962794955, guid: 173d93754fc8f7142ba379a55d0434aa, type: 3}
   - {fileID: -6224482343439403090, guid: 173d93754fc8f7142ba379a55d0434aa, type: 3}
   spriteRend: {fileID: 2121234436127154068}
+  dieColor:
+  - {r: 0.8207547, g: 0.07355818, b: 0.07355818, a: 1}
+  - {r: 0.9056604, g: 0.48090068, b: 0, a: 1}
+  - {r: 0.8301887, g: 0.6966552, b: 0, a: 1}
+  - {r: 0.17007272, g: 0.7924528, b: 0, a: 1}
+  - {r: 0, g: 0.69280016, b: 0.754717, a: 1}
+  - {r: 0.45849648, g: 0.23553754, b: 0.745283, a: 1}
