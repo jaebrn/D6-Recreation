@@ -16,7 +16,7 @@ public class DiceController_Base : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        m_dieValue = Random.Range(0, 5);
     }
 
     // Update is called once per frame
