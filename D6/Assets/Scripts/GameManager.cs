@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-   // public GameObject dicePrefab; //iding prefab
-
+   
     [Header("Dice Table")]
     //Length and Height of the table
     public int columnLength;
@@ -17,16 +16,14 @@ public class GameManager : MonoBehaviour
     //Positional offsets
     public int xOffset;
     public int yOffset;
-    public GameObject Pivot;
     //Die prefab
     public GameObject DiePrefab;
-    public 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //Instantiated 2D dice array 
+        //Instantiating 2D dice array 
         DiceTable = new GameObject[columnLength, rowHeight];
 
         for (int i = 0; i < columnLength; i++)
@@ -35,19 +32,15 @@ public class GameManager : MonoBehaviour
             {
                 DiceTable[i, j] = Instantiate(DiePrefab, (new Vector2(currentDiePosition.x + i*xOffset, currentDiePosition.y + j*yOffset)) , Quaternion.identity);
 
-
-            }
-          
-
+            }         
         }
     }
 
-        // Update is called once per frame
-        void Update()
-        {
+    // Update is called once per frame
+    void Update()
+    {
 
-        }
-   
+    }   
 
 }
 

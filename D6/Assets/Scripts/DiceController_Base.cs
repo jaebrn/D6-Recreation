@@ -28,6 +28,20 @@ public class DiceController_Base : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       // check die y axis position and apply tag or string or something accordingly
+       //die will either register as: 
+            //first row, second row, or currently selected
+    }
+
+    //called when a die is clicked
+    public void OnMouseDown()
+    {
+        // if clicked die is currently selected, clear it
+                // die.position.y =-
+                // if die.pos.u =< something offscreen, delete
+        // if die is on first row, run legality check against selected die
+                // if legality check returns true, die moves, yadda yadda
+        // else if die is on second row or legality check returns false, do dice shimmy. 
+
     }
 }
