@@ -4,7 +4,7 @@ public class DiceController_Base : MonoBehaviour
 {
    // die value management
     [SerializeField]
-    protected int m_dieValue, m_dieColor;
+    public int m_dieValue, m_dieColor;
 
     // die face sprite array
     public Sprite[] dieFace;
@@ -12,6 +12,17 @@ public class DiceController_Base : MonoBehaviour
 
     // die color array
     public Color[] dieColor;
+
+    GameManager gameManagerRef;
+    public bool clickable = false;
+
+    //positional vars
+    public bool firstRow, secondRow, selected = false;
+
+    public bool legalMove;
+
+    public int selectedDieColor, selectedDieValue;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,20 +39,62 @@ public class DiceController_Base : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // check die y axis position and apply tag or string or something accordingly
-       //die will either register as: 
-            //first row, second row, or currently selected
+        if(transform.position.y > 3)
+        {
+            secondRow = true;
+        }
+        else if (transform.position.y < 0)
+        {
+            selected = true;
+            gameObject.tag = "Selected Die"; // applies tag
+        }
+        else
+        {
+            firstRow = true;
+        }
+
+
     }
 
     //called when a die is clicked
     public void OnMouseDown()
     {
-        // if clicked die is currently selected, clear it
-                // die.position.y =-
-                // if die.pos.u =< something offscreen, delete
-        // if die is on first row, run legality check against selected die
-                // if legality check returns true, die moves, yadda yadda
-        // else if die is on second row or legality check returns false, do dice shimmy. 
+        if (firstRow) // die is in the first row
+        {
+            Debug.Log("I am clickable");
 
+            GameObject selected;
+            selected = GameObject.FindGameObjectWithTag("Selected Die"); // iding the selected die
+
+            DiceController_Base diceController = selected.GetComponent<DiceController_Base>(); // accessing selected die script
+            selectedDieColor = diceController.m_dieColor; // getting the color of the selected die
+            selectedDieValue = diceController.m_dieValue; // getting the value of the selected die
+
+            if (selected == null) // if there is no currently selected die, move is legal
+            {
+                legalMove = true;
+                Debug.Log("Move is Legal; first move");
+            }
+            else if(selectedDieColor == m_dieColor || selectedDieValue == m_dieValue + 1 || (m_dieValue == 0 && selectedDieValue == 5)) // if: same color; value +1, or value restart from 1
+            {
+                legalMove = true;
+                Debug.Log("Move is Legal");
+            }
+            else
+            {
+                Debug.Log("Move is not legal");
+            }
+
+        }
+
+        // if selected die is clicked
+        if (gameObject.tag == "Selected Die")
+        {
+            Debug.Log("Clear selected Die");
+        }
+
+    
     }
+    
+    
 }

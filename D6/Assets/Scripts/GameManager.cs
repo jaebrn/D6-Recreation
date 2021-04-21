@@ -32,8 +32,12 @@ public class GameManager : MonoBehaviour
             {
                 DiceTable[i, j] = Instantiate(DiePrefab, (new Vector2(currentDiePosition.x + i*xOffset, currentDiePosition.y + j*yOffset)) , Quaternion.identity);
 
-            }         
+            }
+
+            
         }
+
+        Instantiate(DiePrefab, new Vector2(0, -3.25f), Quaternion.identity); // temporary 'selected die' for testing
     }
 
     // Update is called once per frame
