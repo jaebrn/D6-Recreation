@@ -4,29 +4,50 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject dicePrefab; //iding prefab
+   // public GameObject dicePrefab; //iding prefab
 
-    Vector2[] diceStartingPos = // pos array (first row only)
-    {
-        new Vector2(-7f, 0f),
-        new Vector2(-3.5f, 0f),
-        new Vector2(0f, 0f),
-        new Vector2(3.5f, 0f),
-        new Vector2(7f, 0f),
-    };
+    [Header("Dice Table")]
+    //Length and Height of the table
+    public int columnLength;
+    public int rowHeight;
+    //Table
+    public GameObject[,] DiceTable;
+    //Die pos
+    public Vector3 currentDiePosition;
+    //Positional offsets
+    public int xOffset;
+    public int yOffset;
+    public GameObject Pivot;
+    //Die prefab
+    public GameObject DiePrefab;
+    public 
+
+
     // Start is called before the first frame update
     void Start()
     {
-        // instantiating starting row 
-        for (int i = 0; i <= diceStartingPos.Length; i++) // instatiates number of dice == number of starting positions available
+        //Instantiated 2D dice array 
+        DiceTable = new GameObject[columnLength, rowHeight];
+
+        for (int i = 0; i < columnLength; i++)
         {
-            Instantiate(dicePrefab, diceStartingPos[i], UnityEngine.Quaternion.identity); // instantiates dice prefab at location array index i
+            for (int j = 0; j < rowHeight; j++)
+            {
+                DiceTable[i, j] = Instantiate(DiePrefab, (new Vector2(currentDiePosition.x + i*xOffset, currentDiePosition.y + j*yOffset)) , Quaternion.identity);
+
+
+            }
+          
+
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+   
+
 }
+
