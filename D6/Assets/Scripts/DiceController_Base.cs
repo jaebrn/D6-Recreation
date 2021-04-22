@@ -14,7 +14,6 @@ public class DiceController_Base : MonoBehaviour
     public Color[] dieColor;
 
     GameManager gameManagerRef;
-    public bool clickable = false;
 
     //positional vars
     public bool firstRow, secondRow, selected = false;
@@ -58,53 +57,74 @@ public class DiceController_Base : MonoBehaviour
     //called when a die is clicked
     public void OnMouseDown()
     {
-        if (firstRow) // die is in the first row
+        // die clicked is in the first row
+        if (firstRow) 
         {
             Debug.Log("I am clickable");
 
             GameObject selected;
-            selected = GameObject.FindGameObjectWithTag("Selected Die"); // iding the selected die
+            selected = GameObject.FindWithTag("Selected Die"); // iding the selected die
 
-            DiceController_Base diceController = selected.GetComponent<DiceController_Base>(); // accessing selected die script
-            selectedDieColor = diceController.m_dieColor; // getting the color of the selected die
-            selectedDieValue = diceController.m_dieValue; // getting the value of the selected die
-
-            //if (selected == null) // if there is no currently selected die, move is legal
-            //{
-            //    legalMove = true;
-            //    Debug.Log("Move is Legal; first move");
-            //}
-
-            if(selectedDieColor == m_dieColor || selectedDieValue == m_dieValue + 1 || (m_dieValue == 0 && selectedDieValue == 5)) // if: same color; value +1, or value restart from 1
+            // if there is no selected die
+            if (selected == null) 
             {
+                // attempted move is automatically legal; clicked die becomes new selected die
                 legalMove = true;
-                Debug.Log("Move is Legal");
+                Debug.Log("Move is Legal; first move");
                 startingPos = transform.position;
-                selectedPos = selected.transform.position;
-                
-                Destroy(selected); // destroys previously selected die
+                selectedPos = new Vector2(0, -3.25f);
                 transform.position = Vector2.Lerp(startingPos, selectedPos, 1); // moves clicked die to selected spot
             }
+            
+            //if there is a currently selected die
             else
             {
-                Debug.Log("Move is not legal");
-            }
+                DiceController_Base diceController = selected.GetComponent<DiceController_Base>(); // accessing selected die script
+                selectedDieColor = diceController.m_dieColor; // getting the color of the selected die
+                selectedDieValue = diceController.m_dieValue; // getting the value of the selected die
 
+
+                //if move is legal
+                if (selectedDieColor == m_dieColor || selectedDieValue == m_dieValue - 1 || (m_dieValue == 0 && selectedDieValue == 5)) // if: same color; value +1, or value restart from 1
+                {
+                    legalMove = true;
+                    Debug.Log("Move is Legal");
+                    startingPos = transform.position;
+                    selectedPos = selected.transform.position;
+
+                    Destroy(selected); // destroys previously selected die
+                    transform.position = Vector2.Lerp(startingPos, selectedPos, 1); // moves clicked die to selected spot
+                    selectedDieColor = diceController.m_dieColor; // getting the color of the selected die
+                    selectedDieValue = diceController.m_dieValue; // getting the value of the selected die
+                }
+                //if move is not legal
+                else
+                {
+                    Debug.Log("Move is not legal");
+                }
+            }
         }
 
-        // if selected die is clicked
+        // if die clicked is currently selected
         if (gameObject.tag == "Selected Die")
         {
+            //removes one life
             GameObject lifeCounterObj;
             lifeCounterObj = GameObject.FindGameObjectWithTag("Life Counter");
             Life_Counter lifeCounter = lifeCounterObj.GetComponent<Life_Counter>();
             lifeCounter.LoseLife();
 
-            Destroy(gameObject); // destroys previously selected die
+            // destroys previously selected die
+            Destroy(gameObject); 
             Debug.Log("Clear selected Die");
         }
 
-    
+        //if die clicked is in second row
+        else
+        {
+            Debug.Log("Move is not legal");
+        }
+
     }
     
     
