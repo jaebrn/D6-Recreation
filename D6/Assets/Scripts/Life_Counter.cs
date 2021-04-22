@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Life_Counter : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Life_Counter : MonoBehaviour
         if(currentLives <=0)
         {
             Debug.Log("Game Over");
+            SceneManager.LoadScene("End");
         }
         else
         {
