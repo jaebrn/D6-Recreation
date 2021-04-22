@@ -71,6 +71,7 @@ public class DiceController_Base : MonoBehaviour
                 // attempted move is automatically legal; clicked die becomes new selected die
                 legalMove = true;
                 Debug.Log("Move is Legal; first move");
+                
                 startingPos = transform.position;
                 selectedPos = new Vector2(0, -3.25f);
                 transform.position = Vector2.Lerp(startingPos, selectedPos, 1); // moves clicked die to selected spot

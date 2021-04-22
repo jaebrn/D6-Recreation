@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
             
         }
 
-        Instantiate(DiePrefab, new Vector2(0, -3.25f), Quaternion.identity); // temporary 'selected die' for testing
+       // Instantiate(DiePrefab, new Vector2(0, -3.25f), Quaternion.identity); // temporary 'selected die' for testing
     }
 
     // Update is called once per frame
